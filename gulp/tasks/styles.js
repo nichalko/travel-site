@@ -12,8 +12,8 @@ gulp.task('styles', function() {
 	return gulp.src('./app/assets/styles/styles.css')
 		.pipe(postcss([cssImport, mixins, cssvars, nested, hexrgba, autoprefixer]))
 		.on('error', function(errorInfo) {
+			process.stderr.on("\007");
 			console.log(errorInfo.toString());
-			beeper(3);
 			this.emit('end');
 		})
 		
